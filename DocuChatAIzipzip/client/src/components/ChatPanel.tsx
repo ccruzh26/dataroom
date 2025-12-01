@@ -4,7 +4,7 @@ import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
-import { Sparkles, X, MessageSquare } from 'lucide-react';
+import { Sparkles, MessageSquare } from 'lucide-react';
 
 interface ChatPanelProps {
   messages: ChatMessageType[];
@@ -46,24 +46,14 @@ export default function ChatPanel({
         data-testid="chat-panel"
       >
         <SheetHeader className="shrink-0 px-4 py-3 border-b">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-md bg-primary/10">
-                <Sparkles className="w-4 h-4 text-primary" />
-              </div>
-              <div>
-                <SheetTitle className="text-base">AI Assistant</SheetTitle>
-                <SheetDescription className="text-xs">Ask about your documents</SheetDescription>
-              </div>
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-md bg-primary/10">
+              <Sparkles className="w-4 h-4 text-primary" />
             </div>
-            <Button
-              data-testid="button-close-chat"
-              size="icon"
-              variant="ghost"
-              onClick={onClose}
-            >
-              <X className="w-4 h-4" />
-            </Button>
+            <div>
+              <SheetTitle className="text-base">AI Assistant</SheetTitle>
+              <SheetDescription className="text-xs">Ask about your documents</SheetDescription>
+            </div>
           </div>
         </SheetHeader>
         
