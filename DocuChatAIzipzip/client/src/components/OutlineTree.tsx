@@ -24,7 +24,9 @@ interface OutlineTreeProps {
   onUpdateDocument?: (doc: Document) => void;
   onReorderDocuments?: (documents: Document[]) => void;
   onMoveDocumentsToFolder?: (docIds: string[], folderId: string) => void;
+  onMoveFolderToCategory?: (folderId: string, categoryId: string | null) => void;
   searchQuery?: string;
+  categoryId?: string;
 }
 
 interface TreeNodeProps {
@@ -125,6 +127,10 @@ function TreeNode({
       e.dataTransfer.setData('application/x-multi-select', 'true');
     } else {
       e.dataTransfer.setData('text/plain', document.id);
+    }
+    
+    if (isFolder) {
+      e.dataTransfer.setData('folderId', document.id);
     }
   };
   
@@ -332,7 +338,9 @@ export default function OutlineTree({
   onUpdateDocument, 
   onReorderDocuments, 
   onMoveDocumentsToFolder,
-  searchQuery 
+  onMoveFolderToCategory,
+  searchQuery,
+  categoryId
 }: OutlineTreeProps) {
   const filteredDocs = documents;
 
